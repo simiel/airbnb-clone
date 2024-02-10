@@ -34,23 +34,21 @@ export default function TabLayout() {
             <TabBarIcon name='address-book' color={color} />
           ),
           headerRight: () => (
-            <Link href='/modal' asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name='info-circle'
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+            <Pressable>
+              {({ pressed }) => (
+                <FontAwesome
+                  name='info-circle'
+                  size={25}
+                  color={Colors[colorScheme ?? 'light'].text}
+                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
           ),
         }}
       />
       <Tabs.Screen
-        name='two'
+        name='trips'
         options={{
           title: 'Tab Two',
           tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,

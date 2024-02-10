@@ -45,8 +45,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
     <Stack>
       <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
