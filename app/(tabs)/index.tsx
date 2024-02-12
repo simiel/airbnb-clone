@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { useMemo, useState } from 'react';
-// import ListingsBottomSheet from '@/components/ListingsBottomSheet';
+import ListingsBottomSheet from '@/components/ListingsBottomSheet';
 import listingsData from '@/assets/data/listings.json';
 import ListingsMap from '@/components/ListingsMap';
 import listingsDataGeo from '@/assets/data/listings.geo.json';
@@ -25,7 +25,7 @@ const Page = () => {
         }}
       />
       <ListingsMap listings={getoItems} />
-      {/* <ListingsBottomSheet listings={items} category={category} /> */}
+      <ListingsBottomSheet listings={items} category={category} />
     </View>
   );
 };

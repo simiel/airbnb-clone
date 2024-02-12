@@ -30,7 +30,7 @@ const ListingsMap = memo(({ listings }: Props) => {
 
   // When a marker is selected, navigate to the listing page
   const onMarkerSelected = (event: any) => {
-    router.push(`/listing/${event.properties.id}`);
+    // router.push(`/listing/${event.properties.id}`);
   };
 
   // Focus the map on the user's location
