@@ -7,7 +7,8 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
-      <Link href={'/(modals)/login'}>Go to login</Link>
+      <Link href={'/(modals)/login'}>Go to login modal</Link>
+      <Link href={'/(modals)/booking'}>Go to booking</Link>
       <View
         style={styles.separator}
         lightColor='#eee'
