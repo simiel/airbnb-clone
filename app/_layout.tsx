@@ -1,12 +1,15 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from '@/components/useColorScheme';
 
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 import * as SecureStore from 'expo-secure-store';
 import { useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
+import ModalHeaderText from '@/components/ModalHeaderText';
 
 const CLERK_PUBLISHABLE_KEY = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -33,8 +36,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     mon: require('../assets/fonts/Montserrat-Regular.ttf'),
+    'mon-sb': require('../assets/fonts/Montserrat-SemiBold.ttf'),
+    'mon-b': require('../assets/fonts/Montserrat-Bold.ttf'),
     ...FontAwesome.font,
   });
 
@@ -64,9 +68,48 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const router = useRouter();
   return (
     <Stack>
+      <Stack.Screen
+        name='(modals)/login'
+        options={{
+          presentation: 'modal',
+          title: 'Log in or sign up',
+          headerTitleStyle: {
+            fontFamily: 'mon',
+          },
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => router.back()}>
+              <Ionicons name='close-outline' size={28} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
       <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+      <Stack.Screen
+        name='(modals)/booking'
+        options={{
+          // presentation: 'transparentModal',
+          // animation: 'fade',
+          headerTransparent: true,
+          headerTitle: (props) => <ModalHeaderText />,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => router.back()}
+              style={{
+                backgroundColor: '#fff',
+                borderColor: Colors.light.primary,
+                borderRadius: 20,
+                borderWidth: 1,
+                padding: 4,
+              }}
+            >
+              <Ionicons name='close-outline' size={22} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack>
   );
 }
