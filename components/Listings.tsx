@@ -14,6 +14,7 @@ import {
   BottomSheetFlatList,
   BottomSheetFlatListMethods,
 } from '@gorhom/bottom-sheet';
+import { Listing } from '@/interfaces/listing';
 
 interface Props {
   listings: any[];
@@ -46,7 +47,7 @@ const Listings = ({ listings: items, refresh, category }: Props) => {
   }, [category]);
 
   // Render one listing row for the FlatList
-  const renderRow: ListRenderItem<any> = ({ item }) => (
+  const renderRow: ListRenderItem<Listing> = ({ item }) => (
     // <Link href={`/listing/${item.id}`} asChild>
     <TouchableOpacity>
       <Animated.View
